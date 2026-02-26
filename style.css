@@ -1,0 +1,251 @@
+
+
+:root {
+    --amazon-dark: #131921;
+    --nav-blue: #232f3e;
+    --agri-orange: #febd69;
+    --sidebar-bg: #111111;
+    --text-white: #ffffff;
+}
+
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background-color: #000;
+    color: var(--text-white);
+}
+
+/* NAVBAR */
+.navbar {
+    background-color: var(--amazon-dark);
+    padding: 10px 5%;
+    display: flex;
+    align-items: center;
+    border-bottom: 2px solid var(--agri-orange);
+}
+
+.logo { font-size: 26px; font-weight: bold; }
+.logo span { color: var(--agri-orange); }
+
+.search-bar {
+    display: flex;
+    flex-grow: 1;
+    margin: 0 30px;
+}
+
+.search-bar input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 4px 0 0 4px;
+    border: none;
+}
+
+.search-bar button {
+    background-color: var(--agri-orange);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 0 4px 4px 0;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.user-nav a {
+    color: white;
+    text-decoration: none;
+    margin-left: 20px;
+    font-size: 14px;
+}
+
+/* CATEGORY BAR */
+.category-bar {
+    background-color: var(--nav-blue);
+    padding: 8px 5%;
+}
+
+.category-bar ul {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+    gap: 20px;
+}
+
+.category-bar a {
+    color: white;
+    text-decoration: none;
+}
+
+/* MAIN LAYOUT */
+.main-layout {
+    display: flex;
+    padding: 20px 5%;
+    gap: 20px;
+}
+
+/* SIDEBAR */
+.sidebar {
+    width: 260px;
+    background: var(--sidebar-bg);
+    border: 1px solid #222;
+    border-radius: 4px;
+}
+
+.sidebar-title {
+    padding: 15px;
+    margin: 0;
+    font-size: 14px;
+    background: #1a1a1a;
+    color: var(--agri-orange);
+}
+
+.menu-item {
+    border-bottom: 1px solid #222;
+}
+
+.menu-btn {
+    width: 100%;
+    padding: 15px;
+    background: none;
+    border: none;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+}
+
+.submenu-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: 0.3s;
+    background: #0a0a0a;
+}
+
+.submenu-content a {
+    display: block;
+    padding: 10px 30px;
+    color: #bbb;
+    text-decoration: none;
+    font-size: 13px;
+}
+
+.submenu-content a:hover {
+    background: #1f1f1f;
+    color: var(--agri-orange);
+    padding-left: 35px;
+}
+
+/* FILTER */
+.filter-section {
+    padding: 15px;
+}
+
+.filter-group h4 {
+    color: var(--agri-orange);
+}
+
+.price-inputs {
+    display: flex;
+    gap: 5px;
+    margin-bottom: 10px;
+}
+
+.price-inputs input {
+    width: 50%;
+    background: #222;
+    border: 1px solid #444;
+    color: white;
+    padding: 5px;
+}
+
+.slider {
+    width: 100%;
+    accent-color: var(--agri-orange);
+}
+
+/* CONTENT */
+.content {
+    flex-grow: 1;
+}
+
+.hero {
+    text-align: center;
+    padding: 30px;
+    background: #111;
+    border: 1px solid #222;
+    margin-bottom: 20px;
+}
+
+.introduce {
+    font-size: 2rem;
+}
+
+.red {
+    color: #ff4d4d;
+    font-weight: bold;
+}
+
+.product-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.product-card {
+    background: #111;
+    padding: 15px;
+    border: 1px solid #222;
+    position: relative;
+}
+
+.product-card:hover {
+    border-color: var(--agri-orange);
+}
+
+.tag {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: var(--agri-orange);
+    color: #000;
+    font-size: 10px;
+    padding: 2px 5px;
+    font-weight: bold;
+}
+
+.product-image {
+    height: 150px;
+    background: #222;
+    margin-bottom: 10px;
+    border-radius: 4px;
+}
+
+.price {
+    font-size: 1.2rem;
+    color: var(--agri-orange);
+    font-weight: bold;
+}
+
+.buy-btn {
+    width: 100%;
+    background: transparent;
+    border: 1px solid var(--agri-orange);
+    color: var(--agri-orange);
+    padding: 8px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.buy-btn:hover {
+    background: var(--agri-orange);
+    color: #000;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+    .main-layout {
+        flex-direction: column;
+    }
+    .sidebar {
+        width: 100%;
+    }
+}
