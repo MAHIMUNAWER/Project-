@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 // function check( a,  b)
 // {
 //     let result;
@@ -41,6 +40,7 @@
 //     }
 // }
 
+
 let a=10;
 vector<int>v(a);
 for(let i=1; i<a; i++)
@@ -61,7 +61,7 @@ for(let i=1; i<a; i++)
 cout<<primes.size()<<" ";
 
 for(let i=0; i<primes.size(); i++) cout<<primes[i]<<" ";
-=======
+
 // =============================================
 //  AgriShop - Main JavaScript
 // =============================================
@@ -434,4 +434,4 @@ document.addEventListener('DOMContentLoaded', () => {
     renderProducts();
     showToast('Welcome to AgriShop! 🌾', 'success');
 });
->>>>>>> ed9fed3 (add to do list)
+
