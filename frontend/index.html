@@ -1,16 +1,10 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>AgriShop | Professional Farming Partner</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-
-    <!-- External CSS -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -24,8 +18,8 @@
     </div>
 
     <div class="user-nav">
-        <a href="#"><i class="fas fa-user"></i> Login / Register</a>
-        <a href="#"><i class="fas fa-shopping-cart"></i> Cart</a>
+        <!-- ✅ Connected to userProfile.html -->
+        <a href="#" onclick="goToAccount()"><i class="fas fa-user"></i> Login / Register</a>        <a href="#"><i class="fas fa-shopping-cart"></i> Cart</a>
     </div>
 </header>
 
@@ -40,13 +34,11 @@
 
 <main class="main-layout">
 
-    <!-- SIDEBAR -->
     <aside class="sidebar">
         <h3 class="sidebar-title">MENU CATEGORIES</h3>
 
         <div class="category-list">
 
-            <!-- Crop -->
             <div class="menu-item">
                 <button class="menu-btn" onclick="toggleMenu(this)">
                     Crop-Based Products <i class="fas fa-plus"></i>
@@ -61,7 +53,6 @@
                 </div>
             </div>
 
-            <!-- Livestock -->
             <div class="menu-item">
                 <button class="menu-btn" onclick="toggleMenu(this)">
                     Livestock & Animal Products <i class="fas fa-plus"></i>
@@ -74,7 +65,6 @@
                 </div>
             </div>
 
-            <!-- Other -->
             <div class="menu-item">
                 <button class="menu-btn" onclick="toggleMenu(this)">
                     Other Agricultural Products <i class="fas fa-plus"></i>
@@ -87,7 +77,6 @@
                 </div>
             </div>
 
-            <!-- Processed -->
             <div class="menu-item">
                 <button class="menu-btn" onclick="toggleMenu(this)">
                     Processed & Value-Added Products <i class="fas fa-plus"></i>
@@ -106,10 +95,8 @@
 
         </div>
 
-        <!-- FILTER -->
         <div class="filter-section">
             <h3>Filter Products</h3>
-
             <div class="filter-group">
                 <h4>Price Range</h4>
                 <div class="price-inputs">
@@ -118,7 +105,6 @@
                 </div>
                 <input type="range" min="0" max="10000" class="slider">
             </div>
-
             <div class="filter-group">
                 <label><input type="checkbox"> In Stock Only</label>
             </div>
@@ -126,32 +112,7 @@
 
     </aside>
 
-    <!-- CONTENT -->
-     
     <section class="content">
-
-
-
-        <!-- <div class="product-container">
-
-            <div class="product-card">
-                <div class="product-image"></div>
-                <div class="tag">Cereals</div>
-                <h3>Premium Rice Seeds</h3>
-                <p class="price">$45.00</p>
-                <button class="buy-btn">Add to Cart</button>
-            </div>
-
-            <div class="product-card">
-                <div class="product-image"></div>
-                <div class="tag">Dairy</div>
-                <h3>Fresh Farm Milk (1L)</h3>
-                <p class="price">$12.00</p>
-                <button class="buy-btn">Add to Cart</button>
-            </div>
-
-        </div> -->
-
     </section>
 
 </main>
@@ -160,7 +121,6 @@
 function toggleMenu(btn) {
     let content = btn.nextElementSibling;
     let icon = btn.querySelector('i');
-
     if (content.style.maxHeight) {
         content.style.maxHeight = null;
         icon.classList.replace('fa-minus', 'fa-plus');
@@ -169,6 +129,18 @@ function toggleMenu(btn) {
         icon.classList.replace('fa-plus', 'fa-minus');
     }
 }
+</script>
+
+<script>
+  function getUser() {
+    try { return JSON.parse(localStorage.getItem('agri_current_user')); }
+    catch { return null; }
+  }
+  function goToAccount() {
+    window.location.href = getUser()
+      ? 'userProfile/index.html'
+      : 'userProfile/auth.html';
+  }
 </script>
 
 </body>
