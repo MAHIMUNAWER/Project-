@@ -2,7 +2,8 @@ const express  = require('express');
 const multer   = require('multer');
 const path     = require('path');
 const fs       = require('fs');
-const { getMyListings, getAllListings, createListing, updateListing, deleteListing } = require('../controllers/listingController');
+const { getMyListings, createListing, updateListing, deleteListing } = require('../controllers/listingController');
+
 const router = express.Router();
 
 // ── Multer storage config ─────────────────────────────────────────────────
@@ -26,9 +27,7 @@ const fileFilter = (req, file, cb) => {
 const upload = multer({ storage, fileFilter, limits: { fileSize: 3 * 1024 * 1024 } }); // 3 MB
 
 // ── Routes ────────────────────────────────────────────────────────────────
-router.get('/all', getAllListings);
 router.get   ('/',    getMyListings);
-
 router.post  ('/',    upload.single('image'), createListing);
 router.put   ('/:id', upload.single('image'), updateListing);
 router.delete('/:id', deleteListing);
