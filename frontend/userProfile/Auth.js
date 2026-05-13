@@ -1,6 +1,8 @@
 /* ── userProfile/Auth.js ── */
 
-const API = 'http://localhost:5000/api';
+const API = window.location.port === '5500' || window.location.port === '5501'
+  ? 'http://localhost:5000/api'
+  : `${window.location.protocol}//${window.location.hostname}:5000/api`;
 
 document.addEventListener('DOMContentLoaded', () => {
  if (getUser()) window.location.href = '../index.html';
