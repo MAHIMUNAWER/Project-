@@ -284,7 +284,8 @@ textarea.fi{resize:vertical;min-height:80px}
 
 <script src="userProfile/Authutils.js"></script>
 <script>
-const API = 'http://127.0.0.1:5000/api';
+const API = `${window.location.protocol}//${window.location.hostname}:5000/api`;
+const BASE = `${window.location.protocol}//${window.location.hostname}:5000`;
 let listings = [];
 let editId   = null;
 
@@ -336,7 +337,7 @@ function renderListings() {
 
   grid.innerHTML = filtered.map(l => {
     const imgHTML = l.image
-      ? `<div class="listing-img"><img src="/uploads/listings/${l.image}" alt="${l.name}" onerror="this.parentElement.innerHTML='<span style=font-size:52px>${l.emoji||'🌿'}</span>'"></div>`
+      ? `<div class="listing-img"><img src="${BASE}/uploads/listings/${l.image}" alt="${l.name}" onerror="this.parentElement.innerHTML='<span style=font-size:52px>${l.emoji||'🌿'}</span>'"></div>`
       : `<div class="listing-img no-img">${l.emoji || '🌿'}</div>`;
 
     const pill = l.status === 'Active'   ? 's-active'  :
@@ -426,7 +427,7 @@ function openEdit(id) {
   // show existing image if present
   if (l.image) {
     const prev = document.getElementById('img-preview');
-    prev.src   = `/uploads/listings/${l.image}`;
+    prev.src   = `${BASE}/uploads/listings/${l.image}`;
     prev.style.display = 'block';
     document.getElementById('upload-placeholder').style.display = 'none';
   } else {
