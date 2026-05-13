@@ -1,215 +1,149 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AgriShop – Farmer Profile</title>
-<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Syne:wght@600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <title>AgriShop | Professional Farming Partner</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<script src="Authutils.js"></script>
-<script>requireAuth();</script>
+<header class="navbar">
+    <div class="logo">Agri<span>Shop</span></div>
 
-<!-- ── NAV ── -->
-<nav>
-  <a href="../index.html" class="logo">Agri<em>Shop</em></a>
-  <a href="../index.html" class="nav-back">← Home</a>
-  <div class="nav-right">
-    <div class="nav-pill">
-      <a href="../index.html">🏠 Shop</a>
-      <a href="index.html" class="active">👤 Profile</a>
-      <a href="../myListings.html">📦 My Listings</a>
+    <div class="search-bar">
+        <input type="text" placeholder="Search for Seeds, Equipment, or Crops...">
+        <button>Search</button>
     </div>
-  </div>
+
+    <div class="user-nav">
+        <!-- ✅ Connected to userProfile.html -->
+        <a href="#" onclick="goToAccount()"><i class="fas fa-user"></i> Login / Register</a>        <a href="#"><i class="fas fa-shopping-cart"></i> Cart</a>
+    </div>
+</header>
+
+<nav class="category-bar">
+    <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Govt Schemes</a></li>
+        <li><a href="#">Market Prices</a></li>
+        <li><a href="#">Farmer Services</a></li>
+    </ul>
 </nav>
 
-<!-- ── SHELL ── -->
-<div class="shell">
+<main class="main-layout">
 
-  <!-- PROFILE HERO -->
-  <div class="profile-hero">
-    <div class="avatar-wrap">
-      <div class="avatar" onclick="toast('📷 Photo upload coming soon!')">
-        🧑‍🌾
-        <div class="avatar-edit">✎</div>
-      </div>
-      <div class="verified-badge" title="Verified Farmer">✓</div>
-    </div>
+    <aside class="sidebar">
+        <h3 class="sidebar-title">MENU CATEGORIES</h3>
 
-    <div class="profile-info">
-      <div class="profile-name-row">
-        <div class="profile-name" id="display-name">Your Name</div>
-        <span class="farmer-tag">🌾 Verified Farmer</span>
-      </div>
-      <div class="profile-location">
-        📍 <span id="display-location">—</span>
-      </div>
-      <div class="profile-meta-row">
-        <div class="meta-item">
-          <span class="meta-label">Phone</span>
-          <span class="meta-val" id="display-phone">—</span>
+        <div class="category-list">
+
+            <div class="menu-item">
+                <button class="menu-btn" onclick="toggleMenu(this)">
+                    Crop-Based Products <i class="fas fa-plus"></i>
+                </button>
+                <div class="submenu-content">
+                    <a href="#">Cereals & Grains</a>
+                    <a href="#">Pulses & Legumes</a>
+                    <a href="#">Vegetables</a>
+                    <a href="#">Fruits</a>
+                    <a href="#">Cash Crops</a>
+                    <a href="#">Oilseeds</a>
+                </div>
+            </div>
+
+            <div class="menu-item">
+                <button class="menu-btn" onclick="toggleMenu(this)">
+                    Livestock & Animal Products <i class="fas fa-plus"></i>
+                </button>
+                <div class="submenu-content">
+                    <a href="#">Meat</a>
+                    <a href="#">Dairy</a>
+                    <a href="#">Eggs</a>
+                    <a href="#">By-products</a>
+                </div>
+            </div>
+
+            <div class="menu-item">
+                <button class="menu-btn" onclick="toggleMenu(this)">
+                    Other Agricultural Products <i class="fas fa-plus"></i>
+                </button>
+                <div class="submenu-content">
+                    <a href="#">Spices & Herbs</a>
+                    <a href="#">Flowers & Ornamental Plants</a>
+                    <a href="#">Aquaculture</a>
+                    <a href="#">Forestry Products</a>
+                </div>
+            </div>
+
+            <div class="menu-item">
+                <button class="menu-btn" onclick="toggleMenu(this)">
+                    Processed & Value-Added Products <i class="fas fa-plus"></i>
+                </button>
+                <div class="submenu-content">
+                    <a href="#">Rice Flour</a>
+                    <a href="#">Wheat Flour</a>
+                    <a href="#">Jute Bags</a>
+                    <a href="#">Cotton Textiles</a>
+                    <a href="#">Pickles</a>
+                    <a href="#">Jams</a>
+                    <a href="#">Juices</a>~
+                    <a href="#">Animal Feed</a>
+                </div>
+            </div>
+
         </div>
-        <div class="meta-item">
-          <span class="meta-label">Farm Type</span>
-          <span class="meta-val" id="display-farmtype">—</span>
+
+        <div class="filter-section">
+            <h3>Filter Products</h3>
+            <div class="filter-group">
+                <h4>Price Range</h4>
+                <div class="price-inputs">
+                    <input type="number" placeholder="0">
+                    <input type="number" placeholder="10000">
+                </div>
+                <input type="range" min="0" max="10000" class="slider">
+            </div>
+            <div class="filter-group">
+                <label><input type="checkbox"> In Stock Only</label>
+            </div>
         </div>
-        <div class="meta-item">
-          <span class="meta-label">Land Area</span>
-          <span class="meta-val" id="display-land">—</span>
-        </div>
-        <div class="meta-item">
-          <span class="meta-label">Total Sales</span>
-          <span class="meta-val green" id="display-sales">TK 0</span>
-        </div>
-      </div>
-      <div class="profile-actions">
-        <button class="btn btn-green btn-sm" onclick="switchTab('profile')">✎ Edit Profile</button>
-        <a href="../myListings.html" class="btn btn-outline btn-sm">📦 My Listings</a>
-      </div>
-    </div>
-  </div>
 
-  <!-- ── TABS ── -->
-  <div class="tabs">
-    <button class="tab active" id="tab-profile" onclick="switchTab('profile')">👤 Profile Info</button>
-    <button class="tab" id="tab-orders" onclick="switchTab('orders')">🛒 My Orders</button>
-  </div>
+    </aside>
 
-  <!-- ── PROFILE INFO PANEL ── -->
-  <div class="panel-section active" id="panel-profile">
+    <section class="content">
+    </section>
 
-    <div class="edit-card">
-      <div class="edit-card-title"><span>👤</span> Personal Information</div>
-      <div class="fgrid">
-        <div class="fg">
-          <label class="fl">Full Name</label>
-          <div class="fi-icon-wrap">
-            <span class="fi-icon">👤</span>
-            <input class="fi" id="f-name" placeholder="Your full name">
-          </div>
-        </div>
-        <div class="fg">
-          <label class="fl">Phone / WhatsApp</label>
-          <div class="fi-icon-wrap">
-            <span class="fi-icon">📱</span>
-            <input class="fi" id="f-phone" placeholder="+880 1XXXXXXXXX">
-          </div>
-        </div>
-        <div class="fg">
-          <label class="fl">Email Address</label>
-          <div class="fi-icon-wrap">
-            <span class="fi-icon">✉️</span>
-            <input class="fi" id="f-email" type="email" placeholder="you@email.com">
-          </div>
-        </div>
-        <div class="fg">
-          <label class="fl">NID / Farmer ID</label>
-          <div class="fi-icon-wrap">
-            <span class="fi-icon">🪪</span>
-            <input class="fi" id="f-nid" placeholder="National ID number">
-          </div>
-        </div>
-      </div>
-    </div>
+</main>
 
-    <div class="edit-card">
-      <div class="edit-card-title"><span>🌾</span> Farm Details</div>
-      <div class="fgrid">
-        <div class="fg">
-          <label class="fl">Village / Area</label>
-          <div class="fi-icon-wrap">
-            <span class="fi-icon">🏘️</span>
-            <input class="fi" id="f-village" placeholder="Village or area name">
-          </div>
-        </div>
-        <div class="fg">
-          <label class="fl">District</label>
-          <div class="fi-icon-wrap">
-            <span class="fi-icon">📍</span>
-            <input class="fi" id="f-district" placeholder="District">
-          </div>
-        </div>
-        <div class="fg">
-          <label class="fl">Farm Type</label>
-          <select class="fi" id="f-farmtype">
-            <option value="">Select farm type…</option>
-            <option>Mixed Crops</option>
-            <option>Rice Farming</option>
-            <option>Vegetable Farming</option>
-            <option>Fruit Orchard</option>
-            <option>Livestock</option>
-            <option>Aquaculture / Fish Farm</option>
-            <option>Poultry</option>
-            <option>Dairy</option>
-          </select>
-        </div>
-        <div class="fg">
-          <label class="fl">Land Area (acres)</label>
-          <div class="fi-icon-wrap">
-            <span class="fi-icon">📐</span>
-            <input class="fi" id="f-land" type="number" placeholder="e.g. 4.5">
-          </div>
-        </div>
-      </div>
-      <div class="fg">
-        <label class="fl">About Your Farm</label>
-        <textarea class="fi" id="f-bio" placeholder="Tell buyers about your farm, produce quality, farming methods…"></textarea>
-      </div>
-    </div>
+<script>
+function toggleMenu(btn) 
+{
+    let content = btn.nextElementSibling;
+    let icon = btn.querySelector('i');
+    if (content.style.maxHeight) {
+        content.style.maxHeight = null;
+        icon.classList.replace('fa-minus', 'fa-plus');
+    } else {
+        content.style.maxHeight = content.scrollHeight + "px";
+        icon.classList.replace('fa-plus', 'fa-minus');
+    }
+}
+</script>
 
-    <div style="display:flex; justify-content:flex-end; gap:10px; margin-top:4px;">
-      <button class="btn btn-outline" onclick="resetForm()">✕ Cancel</button>
-      <button class="btn btn-green" onclick="saveProfile()">💾 Save Changes</button>
-    </div>
+<script>
+  function getUser() {
+    try { return JSON.parse(localStorage.getItem('agri_current_user')); }
+    catch { return null; }
+  }
+  function goToAccount() {
+    window.location.href = getUser()
+      ? 'userProfile/index.html'
+      : 'userProfile/auth.html';
+  }
+</script>
 
-  </div>
-
-  <!-- ── ORDERS PANEL ── -->
-  <div class="panel-section" id="panel-orders">
-
-    <div class="stats-row">
-      <div class="stat-box">
-        <div class="stat-box-label">Total Orders</div>
-        <div class="stat-box-val green" id="o-total">0</div>
-      </div>
-      <div class="stat-box">
-        <div class="stat-box-label">Delivered</div>
-        <div class="stat-box-val green" id="o-delivered">0</div>
-      </div>
-      <div class="stat-box">
-        <div class="stat-box-label">Total Spent</div>
-        <div class="stat-box-val gold" id="o-spent">TK 0</div>
-      </div>
-    </div>
-
-    <div class="orders-header">
-      <div class="orders-title">Purchase History</div>
-      <div class="filter-row">
-        <select class="f-select" id="order-filter" onchange="renderOrders()">
-          <option value="">All Orders</option>
-          <option value="Delivered">Delivered</option>
-          <option value="Pending">Pending</option>
-          <option value="Shipped">Shipped</option>
-          <option value="Cancelled">Cancelled</option>
-        </select>
-      </div>
-    </div>
-
-    <div id="orders-list"></div>
-
-  </div>
-
-</div>
-
-<!-- TOAST -->
-<div id="toast"></div>
-
-<!-- ── SCRIPTS ── -->
-<script src="orders.js"></script>
-<script src="Authutils.js"></script>
-<script src="profile.js"></script>
-
+<script src="main.js"></script>
 </body>
 </html>
