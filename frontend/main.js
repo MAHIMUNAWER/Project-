@@ -321,4 +321,8 @@ window.addEventListener('scroll', () => {
 document.addEventListener('DOMContentLoaded', () => {
     loadProducts();
     showToast('Welcome to AgriShop! 🌾', 'success');
+<<<<<<< HEAD
 });
+=======
+});
+>>>>>>> 7d7674a2d5ccb4cab6620266ce541f863513b5ee
