@@ -191,7 +191,13 @@ document.head.appendChild(style);
 
 
 // ─── 7. FETCH PRODUCTS FROM DATABASE ─────────
+<<<<<<< HEAD
+//// ─── 7. FETCH PRODUCTS FROM DATABASE ─────────
+const API  = `${window.location.protocol}//${window.location.hostname}:5000/api`;
+const BASE = `${window.location.protocol}//${window.location.hostname}:5000`;
+=======
 const API = 'http://127.0.0.1:5000/api';
+>>>>>>> origin/main
 
 async function loadProducts() {
     const section = document.querySelector('.content');
@@ -218,9 +224,13 @@ async function loadProducts() {
         renderProducts(data.listings);
 
     } catch (err) {
+<<<<<<< HEAD
+        container.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:60px;color:#888">❌ Cannot connect to server. Make sure backend is running.</div>';
+=======
         // Fallback to demo products if server is offline
         console.warn('Server offline, showing demo products.');
         renderProducts(DEMO_PRODUCTS);
+>>>>>>> origin/main
     }
 }
 
@@ -251,7 +261,11 @@ function renderProducts(list) {
         const inStock = product.stock > 0 && product.status === 'Active';
         const price   = product.price;
         const imgHTML = product.image
+<<<<<<< HEAD
+            ? `<img src="${BASE}/uploads/listings/${product.image}" style="width:100%;height:100%;object-fit:cover;border-radius:4px" onerror="this.outerHTML='<div style=font-size:40px;display:flex;align-items:center;justify-content:center;height:100%>${product.emoji||'🌿'}</div>'">`
+=======
             ? `<img src="http://127.0.0.1:5000/uploads/listings/${product.image}" style="width:100%;height:100%;object-fit:cover;border-radius:4px" onerror="this.outerHTML='<div style=font-size:40px;display:flex;align-items:center;justify-content:center;height:100%>${product.emoji||'🌿'}</div>'">`
+>>>>>>> origin/main
             : `<div style="font-size:40px;display:flex;align-items:center;justify-content:center;height:100%">${product.emoji || '🌿'}</div>`;
 
         const card = document.createElement('div');
@@ -321,4 +335,11 @@ window.addEventListener('scroll', () => {
 document.addEventListener('DOMContentLoaded', () => {
     loadProducts();
     showToast('Welcome to AgriShop! 🌾', 'success');
+<<<<<<< HEAD
 });
+<<<<<<< HEAD
+=======
+});
+>>>>>>> 7d7674a2d5ccb4cab6620266ce541f863513b5ee
+=======
+>>>>>>> origin/main
