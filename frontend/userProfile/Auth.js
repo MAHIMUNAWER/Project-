@@ -1,9 +1,11 @@
-/* ── userProfile/auth.js ── calls real backend API ── */
+/* ── userProfile/Auth.js ── */
 
-const API = 'http://localhost:5000/api';
+const API = window.location.port === '5500' || window.location.port === '5501'
+  ? 'http://localhost:5000/api'
+  : `${window.location.protocol}//${window.location.hostname}:5000/api`;
 
 document.addEventListener('DOMContentLoaded', () => {
-  if (getUser()) window.location.href = 'index.html';
+ if (getUser()) window.location.href = '../index.html';
 });
 
 function switchAuth(tab) {
@@ -68,12 +70,12 @@ async function handleRegister() {
   const terms    = document.getElementById('r-terms').checked;
   let ok = true;
 
-  if (!name)                                    { showErr('r-name-err');  ok = false; }
-  if (!phone || phone.replace(/\D/g,'').length < 10) { showErr('r-phone-err', 'Enter a valid phone number.'); ok = false; }
+  if (!name)                                         { showErr('r-name-err');  ok = false; }
+  if (!phone || phone.replace(/\D/g,'').length < 10) { showErr('r-phone-err'); ok = false; }
   if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { showErr('r-email-err'); ok = false; }
-  if (password.length < 6)                      { showErr('r-pw-err');   ok = false; }
-  if (password !== confirm)                     { showErr('r-conf-err'); ok = false; }
-  if (!terms)                                   { showErr('r-terms-err'); ok = false; }
+  if (password.length < 6)                           { showErr('r-pw-err');   ok = false; }
+  if (password !== confirm)                          { showErr('r-conf-err'); ok = false; }
+  if (!terms)                                        { showErr('r-terms-err'); ok = false; }
   if (!ok) return;
 
   const btn = document.querySelector('#panel-register .btn-submit');
